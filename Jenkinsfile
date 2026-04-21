@@ -26,7 +26,8 @@ pipeline {
                 )]) {
                     sh '''
                     echo $PASS | docker login -u $USER --password-stdin
-                    docker push my-app-jenkins:${BUILD_NUMBER}
+                    docker tag my-app-jenkins:${BUILD_NUMBER} yelopukki/my-app-jenkins:${BUILD_NUMBER}
+                    docker push yelopukki/my-app-jenkins:${BUILD_NUMBER}
                     '''
                 }
             }
