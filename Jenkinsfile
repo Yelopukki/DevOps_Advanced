@@ -1,10 +1,16 @@
-stage('Test') {
-    steps {
-        sh '''
-        python3 -m venv venv
-        . venv/bin/activate
-        pip install -r requirements.txt
-        pytest
-        '''
+pipeline {
+    agent {
+        docker {
+            image 'python:3.11'
+        }
+    }
+
+    stages {
+        stage('Test') {
+            steps {
+                sh 'pip install -r requirements.txt'
+                sh 'pytest'
+            }
+        }
     }
 }
