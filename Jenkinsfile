@@ -12,6 +12,10 @@ pipeline {
                 sh 'docker ps'
             }
         }
-
+        stage('Build Image') {
+            steps {
+                sh 'docker build -t my-app-jenkins:${BUILD_NUMBER} .'
+            }
+        }
     }
 }
