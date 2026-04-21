@@ -7,5 +7,11 @@ pipeline {
                 sh 'echo "Run tests"'
             }
         }
+        stage('Docker Test') {
+            steps {
+                sh 'docker ps'
+            }
+        }
+
     }
 }
